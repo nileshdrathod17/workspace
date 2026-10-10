@@ -12,9 +12,9 @@ permissions:
 jobs:
   test-and-build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        service: [frontend, backend]
+    # strategy:
+    #   matrix:
+    #     service: [frontend, backend]
 
     steps:
       - uses: actions/checkout@v4
@@ -42,9 +42,19 @@ jobs:
       - name: Build Docker image
         uses: docker/build-push-action@v6
         with:
-          context: ./${{ matrix.service }}
+          context: .
+          file: ./frontend/Dockerfile
           push: true
-          tags: nileshrathod17/workspace:latest
+          tags: nileshrathod17/workspace:frontend
+
+
+      - name: Build Docker image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: ./backend/Dockerfile
+          push: true
+          tags: nileshrathod17/workspace:backend          
 
       # - name: Build and push
       #   uses: docker/build-push-action@v6
