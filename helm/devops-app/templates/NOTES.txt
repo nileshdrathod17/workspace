@@ -1,0 +1,10 @@
+Application deployed.
+
+Check pods:
+  kubectl get pods
+
+Check services:
+  kubectl get services
+
+For Minikube:
+  minikube service {{ include "devops-app.fullname" . }}-frontend

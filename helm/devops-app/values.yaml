@@ -1,0 +1,26 @@
+frontend:
+  replicaCount: 1
+  image:
+    repository: devops-frontend
+    tag: latest
+    pullPolicy: IfNotPresent
+  containerPort: 8080
+  service:
+    type: NodePort
+    port: 8080
+    nodePort: 30080
+
+backend:
+  replicaCount: 1
+  image:
+    repository: devops-backend
+    tag: latest
+    pullPolicy: IfNotPresent
+  containerPort: 5000
+  service:
+    type: ClusterIP
+    port: 5000
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
