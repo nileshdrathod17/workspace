@@ -31,6 +31,7 @@ jobs:
           pip install -r ./backend/requirements.txt
           pip install -r ./backend-test-project/requirements.txt
           
+          
       - name: Validate Python syntax
         run: python -m compileall -q ${{ matrix.service }}
 
@@ -55,7 +56,7 @@ jobs:
           context: ./backend-test-project
           file: ./backend-test-project/Dockerfile
           push: true
-          tags: nileshrathod17/workspace:backend
+          tags: nileshrathod17/workspace:backend-test-project
 
 
       - name: Build Docker image
